@@ -1,19 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] public string playerName;
+    [SerializeField] public string playerName = "Player1";  // Cài đặt tên mặc định
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        // Dùng DontDestroyOnLoad để giữ lại đối tượng khi chuyển cảnh
+        DontDestroyOnLoad(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    // Hàm này sẽ trả về tên người chơi
+    public string GetPlayerName()
     {
-        DontDestroyOnLoad(gameObject);
+        return playerName;
     }
 }
