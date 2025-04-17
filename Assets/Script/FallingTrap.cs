@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class FallingTrap : MonoBehaviour
@@ -38,4 +39,6 @@ public class FallingTrap : MonoBehaviour
             Destroy(gameObject, destroyDelay);
         }
     }
+
+    
 }
