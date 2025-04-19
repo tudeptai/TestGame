@@ -4,7 +4,7 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-public class GoblinControllerTests
+public class Test_Goblin
 {
     GameObject goblinObject;
     GoblinController goblinScript;
@@ -36,7 +36,8 @@ public class GoblinControllerTests
     }
 
     [UnityTest]
-    public IEnumerator Goblin_Chases_Player_When_In_DetectionRange()
+    public IEnumerator Goblin_Chases_Player()// gobllin đuổi theo player
+
     {
         playerObject.transform.position = new Vector3(-2f, 0, 0); // Gần goblin
         SetPrivate("isChasing", false);
@@ -54,7 +55,7 @@ public class GoblinControllerTests
 
 
     [UnityTest]
-    public IEnumerator Goblin_Attacks_Player_When_In_AttackRange()
+    public IEnumerator Goblin_Attacks_Player()
     {
         goblinObject.transform.position = new Vector3(-1f, 0, 0);
         SetPrivate("isAttacking", true);
@@ -64,7 +65,7 @@ public class GoblinControllerTests
     }
 
     [UnityTest]
-    public IEnumerator Goblin_Takes_Damage_And_Dies_When_Health_Reaches_Zero()
+    public IEnumerator Goblin_Nhan_sat_thuong_player()
     {
         SetPrivate("currentHealth", 100);
 
@@ -85,7 +86,7 @@ public class GoblinControllerTests
 
 
     [UnityTest]
-    public IEnumerator Goblin_Stops_Chasing_When_Player_Out_Of_Range()
+    public IEnumerator Goblin_Stops_Chasing_Player() // stops đuổi theo
     {
         playerObject.transform.position = new Vector3(20f, 0, 0);
         SetPrivate("isChasing", false);

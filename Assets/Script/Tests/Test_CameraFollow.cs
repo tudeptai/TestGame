@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.TestTools;
-using System.Collections;
 
 public class Test_CameraFollow
 {
@@ -30,7 +30,7 @@ public class Test_CameraFollow
     }
 
     [UnityTest] // camera di chuyển theo vị trí player
-    public IEnumerator Test_CameraMovesTowardPlayer()
+    public IEnumerator Test_CameraMoves_Player()
     {
         // Di chuyển player sang phải
         playerObj.transform.position = new Vector3(5f, 0f, 0f);

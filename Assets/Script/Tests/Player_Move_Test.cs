@@ -18,7 +18,7 @@ public class Player_Move_Test
         Assert.AreEqual(Vector3.forward, player.transform.position);
     }
     [UnityTest]
-    public IEnumerator Player_nhay()
+    public IEnumerator Player_Jump()
     {
         GameObject player = new GameObject();
         Rigidbody rb = player.AddComponent<Rigidbody>();
@@ -33,7 +33,7 @@ public class Player_Move_Test
     }
 
     [UnityTest]
-    public IEnumerator Player_danh()
+    public IEnumerator Player_Attack()
     {
         GameObject enemy = new GameObject("Enemy");
         enemy.transform.position = new Vector3(0, 0, 1);
@@ -52,7 +52,7 @@ public class Player_Move_Test
         Assert.IsTrue(hitEnemy);
     }
     [UnityTest]
-    public IEnumerator PlayerPicksUpItem()
+    public IEnumerator Player_Up_Item()
     {
         GameObject item = GameObject.CreatePrimitive(PrimitiveType.Cube);
         item.name = "Item";
@@ -71,7 +71,7 @@ public class Player_Move_Test
         Assert.IsTrue(pickedUp);
     }
     [UnityTest]
-    public IEnumerator PlayerSlides()
+    public IEnumerator Player_Luot()
     {
         GameObject player = new GameObject();
         player.transform.position = Vector3.zero;
@@ -85,7 +85,7 @@ public class Player_Move_Test
         Assert.AreEqual(new Vector3(0, 0, 3), player.transform.position);
     }
     [UnityTest]
-    public IEnumerator PlayerClimbsLadder()
+    public IEnumerator Player_Leo_Thang()
     {
         GameObject player = new GameObject();
         player.transform.position = Vector3.zero;
@@ -98,7 +98,7 @@ public class Player_Move_Test
         Assert.AreEqual(new Vector3(0, 2, 0), player.transform.position);
     }
     [UnityTest]
-    public IEnumerator PlayerRespawnsAtCheckpoint()
+    public IEnumerator Player_Hoi_sinh()
     {
         Vector3 checkpoint = new Vector3(5, 0, 5);
 
@@ -113,7 +113,7 @@ public class Player_Move_Test
         Assert.AreEqual(checkpoint, player.transform.position);
     }
     [UnityTest]
-    public IEnumerator UIShowsOnItemPickup()
+    public IEnumerator Player_UIShows_Item()
     {
         GameObject ui = new GameObject("ItemUI");
         ui.SetActive(false);

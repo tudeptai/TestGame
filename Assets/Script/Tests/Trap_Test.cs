@@ -30,7 +30,7 @@ public class Trap_Test
     }
 
     [UnityTest]
-    public IEnumerator TrapMovesRightInitially()
+    public IEnumerator Trap_Move()
     {
         Vector3 startPos = trapObject.transform.position;
 
@@ -45,7 +45,7 @@ public class Trap_Test
     }
 
     [UnityTest]
-    public IEnumerator TrapReversesDirectionAtEdge()
+    public IEnumerator Trap_DAT_LAI_VI_TRI_BAY()
     {
         // Đặt lại vị trí ban đầu
         trapObject.transform.position = Vector3.zero;

@@ -23,15 +23,15 @@ public class SoundManager : MonoBehaviour
         musicAudioSource.clip = mucsicClip;
         musicAudioSource.Play();
 
-        //if (!PlayerPrefs.HasKey("musicVolume"))
-        //{
-        //    PlayerPrefs.SetFloat("musicVolume", 1);
-        //    Load();
-        //}
-        //else
-        //{
-        //    Load();
-        //}
+        if (!PlayerPrefs.HasKey("musicVolume"))
+        {
+            PlayerPrefs.SetFloat("musicVolume", 1);
+            Load();
+        }
+        else
+        {
+            Load();
+        }
     }
     public void PlaySFX(AudioClip sfxClip)
     {
@@ -44,11 +44,11 @@ public class SoundManager : MonoBehaviour
         AudioListener.volume = volumeSlider.value;
        Save();
     }
-    //// Update is called once per frame
-    //private void Load()
-    //{
-    //    volumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
-    //}
+    // Update is called once per frame
+    private void Load()
+    {
+        volumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
+    }
     private void Save()
     {
         PlayerPrefs.SetFloat("musicVolume", volumeSlider.value);

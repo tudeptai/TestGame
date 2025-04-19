@@ -332,10 +332,18 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        soundManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<SoundManager>();
+        GameObject audioObj = GameObject.FindGameObjectWithTag("Audio");
+        if (audioObj != null)
+        {
+            soundManager = audioObj.GetComponent<SoundManager>();
+        }
+        else
+        {
+            Debug.LogWarning("SoundManager not found (test or missing tag 'Audio')");
+        }
     }
 
-    private IEnumerator ShowGameOverPanel()
+        private IEnumerator ShowGameOverPanel()
     {
         yield return new WaitForSeconds(0f);
 

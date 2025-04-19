@@ -1,33 +1,32 @@
 ﻿//using System.Collections;
 //using System.Collections.Generic;
 //using UnityEngine;
-//using Cainos.LucidEditor;
 
 //namespace Cainos.PixelArtPlatformer_VillageProps
 //{
 //    public class Chest : MonoBehaviour
 //    {
-//        [FoldoutGroup("Reference")] public Animator animator;
-//        [FoldoutGroup("Reference")] public GameObject itemPrefab;
-//        [FoldoutGroup("Reference")] public GameObject itemPrefab1;
-//        [FoldoutGroup("Reference")] public GameObject monsterPrefab;
-//        [FoldoutGroup("Reference")] public GameObject monsterPrefab1;
+//       // [FoldoutGroup("Reference")] public Animator animator;
+//       // [FoldoutGroup("Reference")] public GameObject itemPrefab;
+//      //  [FoldoutGroup("Reference")] public GameObject itemPrefab1;
+//       // [FoldoutGroup("Reference")] public GameObject monsterPrefab;
+//       // [FoldoutGroup("Reference")] public GameObject monsterPrefab1;
 
 //        private bool isOpened;
 //        private SoundManager soundManager;
 
-//        [FoldoutGroup("Runtime"), ShowInInspector, DisableInEditMode]
+//       // [FoldoutGroup("Runtime"), ShowInInspector, DisableInEditMode]
 //        public bool IsOpened
 //        {
 //            get => isOpened;
 //            set
 //            {
 //                isOpened = value;
-//                animator.SetBool("IsOpened", isOpened);
+//               // animator.SetBool("IsOpened", isOpened);
 //            }
 //        }
 
-//        [FoldoutGroup("Runtime"), Button("Open"), HorizontalGroup("Runtime/Button")]
+//       // [FoldoutGroup("Runtime"), Button("Open"), HorizontalGroup("Runtime/Button")]
 //        public void Open()
 //        {
 //            if (IsOpened) return;
@@ -42,7 +41,7 @@
 //            GenerateItemOrMonster();
 //        }
 
-//        [FoldoutGroup("Runtime"), Button("Close"), HorizontalGroup("Runtime/Button")]
+//       // [FoldoutGroup("Runtime"), Button("Close"), HorizontalGroup("Runtime/Button")]
 //        public void Close()
 //        {
 //            IsOpened = false;
@@ -80,14 +79,14 @@
 
 //            if (generateMonster)
 //            {
-//                prefabToSpawn = (Random.value > 0.5f) ? monsterPrefab : monsterPrefab1;
+//               // prefabToSpawn = (Random.value > 0.5f) ? monsterPrefab : monsterPrefab1;
 //            }
 //            else
 //            {
-//                prefabToSpawn = (Random.value > 0.5f) ? itemPrefab : itemPrefab1;
+//               // prefabToSpawn = (Random.value > 0.5f) ? itemPrefab : itemPrefab1;
 //            }
 
-//            Instantiate(prefabToSpawn, transform.position, Quaternion.identity);
+//            //Instantiate(prefabToSpawn, transform.position, Quaternion.identity);
 //        }
 //    }
 //}

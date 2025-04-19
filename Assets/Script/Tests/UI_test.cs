@@ -1,58 +1,82 @@
-using System.Collections;
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using NUnit.Framework;
+using UnityEngine.TestTools;
+using System.Collections;
+
 public class UI_test
 {
-    private int health;
-    private GameObject coinObject;
-    private GameObject playerObject;
-    private GameObject audioObject;
-    private GameObject gameManagerObject;
-    private UI_Sting uiSting;
-
+    private GameObject uiObject;
+    private UI_Sting ui;
 
     [SetUp]
     public void Setup()
     {
-        health = 100;
-
-        // Khởi tạo đối tượng GameManager và UI_Sting
-        gameManagerObject = new GameObject();
-        uiSting = gameManagerObject.AddComponent<UI_Sting>();
+        uiObject = new GameObject();
+        ui = uiObject.AddComponent<UI_Sting>();
     }
 
-    [Test]
-    public void Health_Should_Decrease_When_Taking_Damage()
+    [UnityTest]
+    public IEnumerator Pause_Should_Stop_Time()
     {
-        health -= 20;
-        Assert.AreEqual(80, health);
+        ui.pause();
+        yield return null;
+        Assert.AreEqual(0f, Time.timeScale);
+        Assert.IsTrue(UI_Sting.GameIsPaused);
     }
 
-    [Test]
-    public void Health_Should_Not_Be_Negative()
+    [UnityTest]
+    public IEnumerator Resume_Should_Resume_Time()
     {
-        health -= 150;
-        if (health < 0) health = 0;
-        Assert.GreaterOrEqual(health, 0);
+        ui.resume();
+        yield return null;
+        Assert.AreEqual(1f, Time.timeScale);
+        Assert.IsFalse(UI_Sting.GameIsPaused);
     }
 
-    [Test]
-    public void Health_Should_Be_Max_At_Start()
+    [UnityTest]
+    public IEnumerator ShowOption_Should_Activate_Panel_And_Pause()
     {
-        Assert.AreEqual(100, health);
+        ui.panel = new GameObject();
+        ui.panel.SetActive(false);
+
+        ui.htoption();
+        yield return null;
+
+        Assert.IsTrue(ui.panel.activeSelf);
+        Assert.AreEqual(0f, Time.timeScale);
+        Assert.IsTrue(UI_Sting.GameIsPaused);
     }
-    [Test]
-    public void Scene_Should_Load_Correctly_When_Start_Is_Pressed()
+
+    [UnityTest]
+    public IEnumerator HideOption_Should_Deactivate_Panel_And_Resume()
     {
-        // Lưu lại tên của cảnh hiện tại
-        string currentScene = SceneManager.GetActiveScene().name;
+        ui.panel = new GameObject();
+        ui.panel.SetActive(true);
 
-        // Gọi phương thức NewGame() (tương tự như nhấn nút Start)
-        uiSting.NewGame();
+        ui.anoption();
+        yield return null;
 
-        // Kiểm tra xem cảnh đã thay đổi hay chưa
-        Assert.AreNotEqual(currentScene, SceneManager.GetActiveScene().name);  // Cảnh phải thay đổi
+        Assert.IsFalse(ui.panel.activeSelf);
+        Assert.AreEqual(1f, Time.timeScale);
+        Assert.IsFalse(UI_Sting.GameIsPaused);
     }
 
+    [UnityTest]
+    public IEnumerator Restart_Should_Reset_Time_And_Reload_Scene()
+    {
+        var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        // Đảm bảo đang ở 1 scene cụ thể
+        Time.timeScale = 0f;
+        UI_Sting.GameIsPaused = true;
+
+        ui.Restart();
+
+        yield return null;
+
+        Assert.AreEqual(1f, Time.timeScale);
+        Assert.IsFalse(UI_Sting.GameIsPaused);
+        Assert.AreEqual(currentSceneIndex, SceneManager.GetActiveScene().buildIndex);
+    }
 }
